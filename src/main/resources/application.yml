@@ -1,0 +1,61 @@
+server:
+  port: 8089
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://79.174.80.223:8761/eureka/
+
+spring:
+  application:
+    name: notifications-service
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/flyway
+    baseline-on-migrate: true
+  datasource:
+    url: jdbc:postgresql://79.174.80.223:5432/notifications
+    username: network
+    password: dreamteam777*
+    driver-class-name: org.postgresql.Driver
+  kafka:
+    bootstrap-servers: 79.174.80.223:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: notification-event-message-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    topics: common-notifications
+
+auth:
+  sec:
+    name: SocialNetworkBot
+    token: 7806033441:AAH3lyIeJZOYY376QOJVzCWbrzRsHEyL8NM
+  baseUrl:
+    baseUrlForRequests: http://79.174.80.223:8085
+  admin:
+    emailAdmin: network-admin@mail.ru
+    passwordAdmin: networkadmin99
+
+logging:
+  level:
+    ru:
+      skillbox:
+        notifications-service=DEBUG:
+    web: info
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter=INFO:

@@ -1,0 +1,10 @@
+{
+  "id": "6edc45b7-1521-4c20-b788-47274835f513",
+  "enablePost": true,
+  "enablePostComment": true,
+  "enableCommentComment": true,
+  "enableFriendRequest": true,
+  "enableFriendBirthday": true,
+  "enableMessage": true,
+  "enableSendEmailMessage": true
+}
